@@ -1,0 +1,84 @@
+1. // Multiplication 
+
+a. It should return a single Number
+b. It should take 2 numbers as Input 
+c. It should return the product of two numbers
+d. It should work with negative numbers as well.
+e. the input value should both be numbers, else should give error.Input
+f. It should handle overflow exception.
+ 
+
+2. Concatodds
+
+Scenario one 
+
+It should return a single array with unique odd numbers in ascending order.
+Expect [concatOdds([3,2,1], [9,1,1,1,4,18,-1]);] to be equal to ([-1,1,3,9,18]);
+
+Scenario two
+
+It should return an empty array when both input arrays are empty.
+Expect[concatOdds([], []);] to be equal to ([]);
+
+Scenario three 
+
+It should return an array with odd numbers from second array when first array is empty.
+Expect[concatOdds([], [3,4,2,8,6])]; to be equal to ([3]);
+
+Scenarion 4
+
+It should return an array with oidd numbers from first when second array is empty.
+Expect[concatOdds([1, 3, 5, 7], [])]; to be equal to ([1, 3, 5, 7]);
+
+scenario 5. 
+
+It should return an empty array when there are no odd numbers in either of teh input arrays.
+Expect [concatOdds([2,4,6,8], [6,8,2])]; to be equal to ([]);
+
+scenario 6.
+
+It should return an array with unique odd numbers in ascending order, even if the input arrays have duplicate numbers.
+Expect[concatOdds([1,1,5,3,6,6,8], [2,4,3,5,2])]; to be equal to ([1,3,5]);
+
+scenario 7. 
+
+It should handle arrays with non-nteger elements and return an array of unique odd numbers in ascending order. 
+Expect[concatOdds([3,2,'a', 15], [1,'b', 'c', 5])]; is equal to ([1,3,5,15]);
+
+scenario 8. 
+
+It should handle negative integer inputs and return an array with negative odd numbers in ascending order.
+Expect[concatOdds([-3,-5,-1], [-8,-9,-5,-1,-18,-7])]; is equal to ([-18,-9,-7,-5,-3,-1]);
+
+
+
+3. Functional Tests
+a. when Cart is empty-Naviagte to the checkout page, the user should se a message about cart is empty, cannot proceed further with checkoutwithout any items in the cart.
+b. when user checksout as guest(has items in cart):
+Navigates to checkout page
+choose the option to check out asa aguest.
+enter shipping address.
+select payment mode/information
+complete the checkout process.
+after the above the user should be able to successfully check out as guest.
+
+c. Prompted to create an account, when user already has items in cart and is checking out as guest.
+User will add shipping information.
+Provide payment details
+complete checkout process.
+after the above the user should be prompted to create an account on the website after successfully checking out as a guets.
+
+d. chat/connect with user
+when user is the process of checking out:
+user provides incorrect information, where we can observe error messages and user feedback.
+correct info then provided and checkout.
+after the above the error message are cleared and it should tell the user at every point information is incorrect, and then successfull completion and should return in success confirmation messageon checkout. 
+
+e. Validating payment information is added securely and correctly.
+
+f. implementing user-friendly interface with helping user to shop items and checkout successfully. 
+
+
+
+
+
