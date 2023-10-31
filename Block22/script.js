@@ -37,13 +37,15 @@ async function addNewSong(song) {
     body: JSON.stringify(song),
   });
   console.log(response);
-  const newSong = response.json();
+  const newSong = await response.json();
   return newSong;
 }
 const renderNewSongForm = async () => {
+  console.log('coming here');
   const newSongForm = document.querySelector('#new-song-form');
-  newSongForm.innerHTML = `
-  <form>
+  const formElement = document.createElement('form');
+  formElement.innerHTML = `
+  
     <label for="song-title">Title</label>
     <input type="text" name="song-title" id="song-title"/>
     
@@ -56,29 +58,28 @@ const renderNewSongForm = async () => {
     <label for="song-release-date">Release Date</label>
     <input type="date" name="release-date" id="song-release-date"/>
     
-    <button type="submit">Add Song</button>
-    </form>`;
+    <button type="submit">Add Song</button>`;
+
+  formElement.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const title = document.querySelector('#song-title').value;
+    const artist = document.querySelector('#song-artist').value;
+    const genre = document.querySelector('#song-genre').value;
+    const releaseDate = document.querySelector('#song-release-date').value;
+
+    const songData = {
+      title,
+      artist_id: artist,
+      genre_id: genre,
+      release_date: releaseDate,
+    };
+
+    const newSong = await addNewSong(songData);
+    const songs = await fetchAllSongs();
+    renderAllSongs(songs);
+  });
+  newSongForm.appendChild(formElement);
 };
-
-const newSongForm = document.getElementById('new-song-form');
-newSongForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const title = document.querySelector('#song-title').value;
-  const artist = document.querySelector('#song-artist').value;
-  const genre = document.querySelector('#song-genre').value;
-  const releaseDate = document.querySelector('#song-release-date').value;
-
-  const songData = {
-    title,
-    artist_id: artist,
-    genre_id: genre,
-    release_date: releaseDate,
-  };
-
-  await addNewSong(songData);
-  const songs = await fetchAllSongs();
-  renderAllSongs(songs);
-});
 
 async function init() {
   const songs = await fetchAllSongs();
@@ -86,4 +87,5 @@ async function init() {
   renderNewSongForm();
   //   console.log(renderSong);
 }
+
 init();
